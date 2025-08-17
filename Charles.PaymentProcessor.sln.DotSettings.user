@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=30f93fdc_002D638f_002D49f8_002D9785_002Df5c5a6106609/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InitializeAsync_ValidInput_CreatesPaymentAndPublishesEvent" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::A1F4726F-3959-4153-B430-4DAFE93F3886::net9.0::Charles.PaymentProcessor.Tests.PaymentServiceTests.InitializeAsync_ValidInput_CreatesPaymentAndPublishesEvent&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6e64f96a_002Da635_002D418c_002D8d8e_002D3a308e1e255a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="InitializeAsync_ValidInput_CreatesPaymentAndPublishesEvent #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::A1F4726F-3959-4153-B430-4DAFE93F3886::net9.0::Charles.PaymentProcessor.Test.SqsEventPublisherTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
