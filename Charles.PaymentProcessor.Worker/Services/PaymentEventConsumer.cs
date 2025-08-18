@@ -15,18 +15,18 @@ public class PaymentEventConsumer : BackgroundService
     private readonly IAmazonSQS _sqs;
     private readonly string _queueUrl;
     private readonly ILogger<PaymentEventConsumer> _logger;
-    private readonly IRepository<Payment> _paymentRepository;
+    private readonly IServiceProvider _serviceProvider;
 
     public PaymentEventConsumer(
         IAmazonSQS sqs,
         string queueUrl,
         ILogger<PaymentEventConsumer> logger,
-        IRepository<Payment> paymentRepository)
+        IServiceProvider serviceProvider)
     {
         _sqs = sqs;
         _queueUrl = queueUrl;
         _logger = logger;
-        _paymentRepository = paymentRepository;
+        _serviceProvider = serviceProvider;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -43,38 +43,46 @@ public class PaymentEventConsumer : BackgroundService
                     MaxNumberOfMessages = 5,
                     WaitTimeSeconds = 10
                 }, stoppingToken);
-
-                foreach (var message in response.Messages)
+                if (response.Messages == null || response?.Messages?.Count == 0)
                 {
-                    _logger.LogInformation("[SQS] Received message: {Body}", message.Body);
-
-                    try
+                    _logger.LogInformation("Queue is empty");
+                    continue; 
+                }
+                else
+                {
+                    foreach (var message in response.Messages)
                     {
-                        var payment = JsonSerializer.Deserialize<Payment>(message.Body);
+                        _logger.LogInformation("[SQS] Received message: {Body}", message.Body);
 
-                        if (payment != null)
+                        try
                         {
-                            _logger.LogInformation("[DB] Payment saved successfully: {PaymentId}", payment.Id);
-                        }
-                        else
-                        {
-                            _logger.LogWarning("[SQS] Could not deserialize message: {Body}", message.Body);
-                        }
+                            var payment = JsonSerializer.Deserialize<Payment>(message.Body);
 
-                        await _sqs.DeleteMessageAsync(_queueUrl, message.ReceiptHandle, stoppingToken);
-                        _logger.LogInformation("[SQS] Deleted message with ReceiptHandle: {ReceiptHandle}",
-                            message.ReceiptHandle);
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex, "[SQS] Error while handling message: {Body}", message.Body);
+                            if (payment != null)
+                            {
+                                _logger.LogInformation("[DB] Payment saved successfully: {PaymentId}", payment.Id);
+                            }
+                            else
+                            {
+                                _logger.LogWarning("[SQS] Could not deserialize message: {Body}", message.Body);
+                            }
+
+                            await _sqs.DeleteMessageAsync(_queueUrl, message.ReceiptHandle, stoppingToken);
+                            _logger.LogInformation("[SQS] Deleted message with ReceiptHandle: {ReceiptHandle}",
+                                message.ReceiptHandle);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, "[SQS] Error while handling message: {Body}", message.Body);
+                        }
                     }
                 }
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error while processing messages from {QueueUrl}", _queueUrl);
-                await Task.Delay(TimeSpan.FromSeconds(5), stoppingToken); 
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken); 
             }
         }
 

@@ -8,7 +8,7 @@ namespace Charles.PaymentProcessor.Api.Controllers;
 
 [ApiController]
 [Route("auth")]
-public class AuthController(IRepository<Merchant> db, IJwtTokenGenerator jwt, IConfiguration config)
+public class AuthController(IRepository<Merchant> repository, IJwtTokenGenerator jwt, IConfiguration config)
     : ControllerBase
 {
     [HttpPost("apikey")]
@@ -16,7 +16,7 @@ public class AuthController(IRepository<Merchant> db, IJwtTokenGenerator jwt, IC
     {
         var salt = config["ApiKeys:Salt"];
         var apiKeyHash = ApiKeyHelper.HashApiKey(request.ApiKey, salt);
-        var merchant = await db
+        var merchant = await repository
             .GetSingleByAsync(m => m.ApiKeyHash == apiKeyHash);
 
         if (merchant == null)
@@ -27,7 +27,7 @@ public class AuthController(IRepository<Merchant> db, IJwtTokenGenerator jwt, IC
         return Ok(new
         {
             accessToken = token,
-            expiresIn = 3600
+            expiresIn = "1Hour"
         });
     }
 }

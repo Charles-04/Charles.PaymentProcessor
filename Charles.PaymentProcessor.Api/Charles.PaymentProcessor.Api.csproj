@@ -23,6 +23,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Charles.PaymentProcessor.Application\Charles.PaymentProcessor.Application.csproj" />
       <ProjectReference Include="..\Charles.PaymentProcessor.Infrastructure\Charles.PaymentProcessor.Infrastructure.csproj" />
+      <ProjectReference Include="..\Charles.PaymentProcessor.Worker\Charles.PaymentProcessor.Worker.csproj" />
     </ItemGroup>
 
 </Project>

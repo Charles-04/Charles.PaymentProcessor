@@ -9,11 +9,11 @@ namespace Charles.PaymentProcessor.Controllers;
 [Route("api/webhooks")]
 public class WebhookController : ControllerBase
 {
-    private readonly IPaymentService _svc;
+    private readonly IPaymentService _service;
 
-    public WebhookController(IPaymentService svc)
+    public WebhookController(IPaymentService service)
     {
-        _svc = svc;
+        _service = service;
     }
 
     [HttpPost("payment-updates")]
@@ -21,7 +21,7 @@ public class WebhookController : ControllerBase
         [FromHeader(Name = "X-Signature")] string signature, [FromHeader(Name = "X-Merchant-Id")] Guid merchantId,
         CancellationToken ct)
     {
-        await _svc.HandleGatewayWebhookAsync(req.Payload, signature, merchantId, ct);
+        await _service.HandleGatewayWebhookAsync(req.Payload, signature, merchantId, ct);
         return Ok();
     }
 }

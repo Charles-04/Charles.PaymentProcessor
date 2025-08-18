@@ -5,6 +5,7 @@ using Charles.PayementProcessor.Application.Services;
 using Charles.PaymentProcessor.Api.Extension;
 using Charles.PaymentProcessor.Domain.Entities;
 using Charles.PaymentProcessor.Domain.Interfaces;
+using Charles.PaymentProcessor.Worker.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -20,7 +21,7 @@ builder.Services.AddDbContext<PaymentDbContext>(o =>
 
 builder.Services.AddSingleton<IAmazonSQS>(_ =>
 {
-    var region = RegionEndpoint.GetBySystemName(cfg["AWS:Region"] ?? "us-east-1");
+    var region = RegionEndpoint.GetBySystemName(cfg["AWS:Region"] ?? "eu-north-1");
     var serviceUrl = cfg["AWS:ServiceURL"];
     var config = new AmazonSQSConfig { RegionEndpoint = region };
     if (!string.IsNullOrWhiteSpace(serviceUrl)) config.ServiceURL = serviceUrl;
@@ -52,6 +53,15 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(cfg["Jwt:Secret"]))
         };
     });
+
+builder.Services.AddHostedService<PaymentEventConsumer>(sp =>
+{
+    var sqs = sp.GetRequiredService<IAmazonSQS>();
+    var logger = sp.GetRequiredService<ILogger<PaymentEventConsumer>>();
+    var queueUrl = builder.Configuration["AWS:ServiceURL"];
+
+    return new PaymentEventConsumer(sqs, queueUrl, logger, sp);
+});
 
 builder.Services.AddAuthorization();
 

@@ -9,27 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="774186f9-c817-46e3-8c02-5bde0a671d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/AuthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/ExceptionHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/ValidateModelAttibute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/JwtTokenGenerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Utilities/ApiKeyUtility.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/AuthenticationRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/ErrorResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Interfaces/IJwtTokenGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Charles.PaymentProcessor.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Charles.PaymentProcessor.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/AuthController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/DbSeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/DbSeeder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/WebhookController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/WebhookController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Charles.PaymentProcessor.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Charles.PaymentProcessor.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Charles.PaymentProcessor.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Charles.PaymentProcessor.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/InitializePaymentRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/InitializePaymentRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Test/SqsPublisherTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Test/SqsPublisherTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Worker/Services/PaymentEventConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Worker/Services/PaymentEventConsumer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +63,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.Charles.PaymentProcessor: http.executor": "Debug",
+    ".NET Launch Settings Profile.Charles.PaymentProcessor: http.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -156,10 +143,10 @@
           <line>20</line>
           <properties documentPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs" containingFunctionPresentation="Method 'Initialize'">
             <startOffsets>
-              <option value="672" />
+              <option value="741" />
             </startOffsets>
             <endOffsets>
-              <option value="673" />
+              <option value="742" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
