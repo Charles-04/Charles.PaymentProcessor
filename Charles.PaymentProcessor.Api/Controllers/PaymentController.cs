@@ -1,5 +1,6 @@
 using Charles.PaymentProcessor.Domain.DTOs;
 using Charles.PaymentProcessor.Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PaymentSystem.Infrastructure;
@@ -14,6 +15,7 @@ public class PaymentsController : ControllerBase
 
     public PaymentsController(IPaymentService svc) { _svc = svc; }
 
+    [Authorize]
     [HttpPost("initialize")]
     public async Task<ActionResult<InitPaymentResponse>> Initialize([FromBody] InitPaymentRequest req, CancellationToken ct)
     {
@@ -35,6 +37,7 @@ public class PaymentsController : ControllerBase
         return Ok(new InitPaymentResponse(reference, "Pending"));
     }
 
+    [Authorize]
     [HttpGet("{reference}")]
     public async Task<IActionResult> Get(string reference, [FromServices] PaymentDbContext db, CancellationToken ct)
     {

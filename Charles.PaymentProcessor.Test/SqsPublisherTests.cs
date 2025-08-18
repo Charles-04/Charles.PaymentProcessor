@@ -19,8 +19,6 @@ using Xunit;
         private readonly Mock<ILogger<SqsEventPublisher>> _loggerMock;
         private readonly IConfiguration _config;
         private readonly SqsEventPublisher _publisher;
-        private readonly CancellationToken _ct = CancellationToken.None;
-
 
         public SqsEventPublisherTests()
         {

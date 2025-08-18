@@ -1,72 +1,88 @@
-namespace Charles.PaymentProcessor.Api.Extension;
-
+using Charles.PayementProcessor.Application.Utilities;
 using Charles.PaymentProcessor.Domain.Entities;
 using Charles.PaymentProcessor.Domain.Enums;
 using Charles.PaymentProcessor.Domain.Interfaces;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+namespace Charles.PaymentProcessor.Api.Extension;
 
-
-    public static class ApplicationBuilderExtensions
+public static class ApplicationBuilderExtensions
+{
+    public static async Task SeedDatabaseAsync(this WebApplication app, CancellationToken ct = default)
     {
-        public static async Task SeedDatabaseAsync(this WebApplication app, CancellationToken ct = default)
+        using var scope = app.Services.CreateScope();
+        var cfg = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+        var merchantRepo = scope.ServiceProvider.GetRequiredService<IRepository<Merchant>>();
+        var paymentMethodRepo = scope.ServiceProvider.GetRequiredService<IRepository<PaymentMethod>>();
+
+        var salt = cfg["ApiKeys:Salt"] ?? throw new InvalidOperationException("Missing ApiKeys:Salt in configuration.");
+
+        var merchants = (await merchantRepo.GetAllAsync(ct)).ToList();
+
+        if (!merchants.Any())
         {
-            using var scope = app.Services.CreateScope();
-            var merchantRepo = scope.ServiceProvider.GetRequiredService<IRepository<Merchant>>();
-            var paymentMethodRepo = scope.ServiceProvider.GetRequiredService<IRepository<PaymentMethod>>();
-
-            // 1️⃣ Seed Merchants
-            if (!(await merchantRepo.GetAllAsync(ct)).Any())
+            merchants = new List<Merchant>
             {
-                var merchants = new List<Merchant>
-                {
-                    new Merchant { Name = "Merchant A", WebhookSecret = Guid.NewGuid().ToString() },
-                    new Merchant { Name = "Merchant B", WebhookSecret = Guid.NewGuid().ToString() }
-                };
+                new Merchant { Name = "Merchant A", WebhookSecret = Guid.NewGuid().ToString() },
+                new Merchant { Name = "Merchant B", WebhookSecret = Guid.NewGuid().ToString() }
+            };
 
-                foreach (var merchant in merchants)
-                    await merchantRepo.AddAsync(merchant, ct);
+            foreach (var m in merchants)
+            {
+                var apiKey = ApiKeyHelper.GenerateApiKey();
+                m.ApiKeyHash = ApiKeyHelper.HashApiKey(apiKey, salt);
 
-                Console.WriteLine($"Seeded {merchants.Count} merchants.");
+                await merchantRepo.AddAsync(m, ct);
+
+                Console.WriteLine($"[SEED] {m.Name} API Key: {apiKey}");
             }
 
-            // 2️⃣ Seed Payment Methods per merchant
-            var allMerchants = await merchantRepo.GetAllAsync(ct);
-            foreach (var merchant in allMerchants)
+            Console.WriteLine($"[SEED] Seeded {merchants.Count} merchants with API keys.");
+        }
+        else
+        {
+            foreach (var m in merchants.Where(x => string.IsNullOrWhiteSpace(x.ApiKeyHash)))
             {
-                var existingMethods =  paymentMethodRepo.Query().Where(pm => pm.MerchantId == merchant.Id);
-                if (!existingMethods.Any())
-                {
-                    var paymentMethods = new List<PaymentMethod>
-                    {
-                        new PaymentMethod
-                        {
-                            MerchantId = merchant.Id,
-                            Type = PaymentMethodType.Card,
-                            DisplayName = "Credit/Debit Card",
-                            Details = "{}"
-                        },
-                        new PaymentMethod
-                        {
-                            MerchantId = merchant.Id,
-                            Type = PaymentMethodType.BankTransfer,
-                            DisplayName = "Bank Transfer",
-                            Details = "{}"
-                        },
-                        new PaymentMethod
-                        {
-                            MerchantId = merchant.Id,
-                            Type = PaymentMethodType.MobileMoney,
-                            DisplayName = "Wallet",
-                            Details = "{}"
-                        }
-                    };
+                var apiKey = ApiKeyHelper.GenerateApiKey();
+                m.ApiKeyHash = ApiKeyHelper.HashApiKey(apiKey, salt);
+                await merchantRepo.UpdateAsync(m, ct);
 
-                    foreach (var pm in paymentMethods)
-                        await paymentMethodRepo.AddAsync(pm, ct);
-
-                    Console.WriteLine($"Seeded {paymentMethods.Count} payment methods for {merchant.Name}.");
-                }
+                Console.WriteLine($"[SEED] Backfilled API Key for {m.Name}: {apiKey}");
             }
         }
+
+        foreach (var merchant in merchants)
+        {
+            var hasMethods = paymentMethodRepo.Query().Any(pm => pm.MerchantId == merchant.Id);
+            if (hasMethods) continue;
+
+            var paymentMethods = new[]
+            {
+                new PaymentMethod
+                {
+                    MerchantId = merchant.Id,
+                    Type = PaymentMethodType.Card,
+                    DisplayName = "Credit/Debit Card",
+                    Details = "{}"
+                },
+                new PaymentMethod
+                {
+                    MerchantId = merchant.Id,
+                    Type = PaymentMethodType.BankTransfer,
+                    DisplayName = "Bank Transfer",
+                    Details = "{}"
+                },
+                new PaymentMethod
+                {
+                    MerchantId = merchant.Id,
+                    Type = PaymentMethodType.MobileMoney,
+                    DisplayName = "Wallet",
+                    Details = "{}"
+                }
+            };
+
+            foreach (var pm in paymentMethods)
+                await paymentMethodRepo.AddAsync(pm, ct);
+
+            Console.WriteLine($"[SEED] Seeded {paymentMethods.Length} payment methods for {merchant.Name}.");
+        }
     }
+}

@@ -9,29 +9,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="774186f9-c817-46e3-8c02-5bde0a671d6f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Charles.PaymentProcessor.Application.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/HmacSignatureVerifier.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/PaymentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/SqsEventPublisher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/Events.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/InitializePaymentRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/InitializePaymentResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/WebhookPayload.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Entities/Merchant.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Entities/Payment.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Entities/PaymentMethod.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Enums/Enumerations.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Interfaces/IEventPublisher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Interfaces/IPaymentService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Interfaces/IRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Interfaces/ISignatureVerifier.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Infrastructure/PaymentServiceDbContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Infrastructure/Repository/Repository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Test/PaymentServiceTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Test/SqsPublisherTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Worker/Services/PaymentEventConsumer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.sln" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/AuthController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/ExceptionHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/ValidateModelAttibute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/JwtTokenGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Utilities/ApiKeyUtility.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/AuthenticationRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/ErrorResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Interfaces/IJwtTokenGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Charles.PaymentProcessor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Charles.PaymentProcessor.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Charles.PaymentProcessor.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/DbSeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Extension/DbSeeder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Charles.PaymentProcessor.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Charles.PaymentProcessor.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Charles.PaymentProcessor.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/Charles.PaymentProcessor.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/InitializePaymentRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Domain/DTOs/InitializePaymentRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Test/SqsPublisherTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Test/SqsPublisherTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.Worker/Services/PaymentEventConsumer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.Worker/Services/PaymentEventConsumer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Charles.PaymentProcessor.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Charles.PaymentProcessor.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,15 +41,31 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Charles-04"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Charles-04/Charles.PaymentProcessor.git",
+    "accountId": "ac421a8e-d1df-492d-b46d-71f2bac70818"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dcf1002524644192826d8098bf8c8c9ff83400/86/31444750/String.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaceea776765469ba86481f16df882dd218600/cb/68b845a3/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dbb64f2634dc3ddad23782f1a1a5a665aa841493774f99132452d403f219f10/ErrorResponse.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/WebhookController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Charles.PaymentProcessor.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Charles.PaymentProcessor.Api/obj/Debug/net9.0/Charles.PaymentProcessor.GlobalUsings.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="31JxHbMI1ttCsYQrsH9KtXg2QNf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -62,16 +76,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.Charles.PaymentProcessor: http.executor": "Run",
+    ".NET Launch Settings Profile.Charles.PaymentProcessor: http.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Charles.PaymentProcessor: http">
@@ -123,6 +143,54 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Charles.PaymentProcessor.Api" />
+    </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs</url>
+          <line>20</line>
+          <properties documentPath="$PROJECT_DIR$/Charles.PaymentProcessor.Api/Controllers/PaymentController.cs" containingFunctionPresentation="Method 'Initialize'">
+            <startOffsets>
+              <option value="672" />
+            </startOffsets>
+            <endOffsets>
+              <option value="673" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/PaymentService.cs</url>
+          <line>33</line>
+          <properties documentPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/PaymentService.cs" containingFunctionPresentation="Method 'InitializeAsync'">
+            <startOffsets>
+              <option value="1032" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1033" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/SqsEventPublisher.cs</url>
+          <line>22</line>
+          <properties documentPath="$PROJECT_DIR$/Charles.PaymentProcessor.Application/Services/SqsEventPublisher.cs" containingFunctionPresentation="Method 'PublishAsync'">
+            <startOffsets>
+              <option value="815" />
+            </startOffsets>
+            <endOffsets>
+              <option value="816" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

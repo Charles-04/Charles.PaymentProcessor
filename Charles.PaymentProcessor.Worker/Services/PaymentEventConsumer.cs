@@ -54,7 +54,6 @@ public class PaymentEventConsumer : BackgroundService
 
                         if (payment != null)
                         {
-                            await _paymentRepository.AddAsync(payment);
                             _logger.LogInformation("[DB] Payment saved successfully: {PaymentId}", payment.Id);
                         }
                         else
