@@ -75,8 +75,11 @@ public class PaymentService : IPaymentService
         var payment = await _paymentRepo.GetSingleByAsync( x => x.MerchantId == merchantId && x.Reference == payload.Reference, ct)
             ?? throw new KeyNotFoundException("Payment not found");
 
-        payment.Status = payload.Success ? PaymentStatus.Succeeded : PaymentStatus.Failed;
-        payment.PaymentMethodId = payload.PaymentMethodId;
+        var newStatus = payload.Success ? PaymentStatus.Succeeded : PaymentStatus.Failed;
+        if (payment.Status == newStatus)
+        {
+            return;
+        }        payment.PaymentMethodId = payload.PaymentMethodId;
         payment.UpdatedAt = DateTime.UtcNow;
 
         await _paymentRepo.UpdateAsync(payment, ct);
